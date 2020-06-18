@@ -1,0 +1,246 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/styles/kendo.common.min.css" />
+        <link rel="stylesheet" href="css/styles/kendo.default.min.css" />
+    	<link rel="stylesheet" href="css/styles/kendo.default.mobile.min.css" />
+		
+		<!--
+		<link rel="stylesheet" href="css/style.css" />
+	-->
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="js/kendo.all.min.js"></script>
+		<script src="js/kendo.timezones.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+
+    </head>
+    <body>
+        <div id="example">
+            <div class="demo-section k-content wide">
+                <ul id="menu">
+                    <li>
+                        Products
+                        <ul>
+                            <li>
+                                Furniture
+                                <ul>
+                                    <li>Tables & Chairs</li>
+                                    <li>Sofas</li>
+                                    <li>Occasional Furniture</li>
+                                    <li>Children's Furniture</li>
+                                    <li>Beds</li>
+                                </ul>
+    
+    
+                            </li>
+                            <li>
+                                Decor
+                                <ul>
+                                    <li>Bed Linen</li>
+                                    <li>Throws</li>
+                                    <li>Curtains & Blinds</li>
+                                    <li>Rugs</li>
+                                    <li>Carpets</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Storage
+                                <ul>
+                                    <li>Wall Shelving</li>
+                                    <li>Kids Storage</li>
+                                    <li>Baskets</li>
+                                    <li>Multimedia Storage</li>
+                                    <li>Floor Shelving</li>
+                                    <li>Toilet Roll Holders</li>
+                                    <li>Storage Jars</li>
+                                    <li>Drawers</li>
+                                    <li>Boxes</li>
+                                </ul>
+    
+                            </li>
+                            <li>
+                                Lights
+                                <ul>
+                                    <li>Ceiling</li>
+                                    <li>Table</li>
+                                    <li>Floor</li>
+                                    <li>Shades</li>
+                                    <li>Wall Lights</li>
+                                    <li>Spotlights</li>
+                                    <li>Push Light</li>
+                                    <li>String Lights</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Stores
+                        <ul>
+                            <li>
+                                <div id="template" style="padding: 10px;">
+                                    <h2>Around the Globe</h2>
+                                    <ol>
+                                        <li>United States</li>
+                                        <li>Europe</li>
+                                        <li>Canada</li>
+                                        <li>Australia</li>
+                                    </ol>
+                                    <img src="../content/web/menu/map.png" alt="Stores Around the Globe" />
+                                    <button class="k-button">See full list</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Blog
+                    </li>
+                    <li>
+                        Company
+                    </li>
+                    <li>
+                        Events
+                    </li>
+                    <li disabled="disabled">
+                        News
+                    </li>
+                </ul>
+                <div id="drawer">
+                    <div id="drawer-content">
+                        <div id="Inbox">
+                            <div id="grid"></div>
+                        </div>
+                        <div id="Notifications" class="hidden">
+                            <ul>
+                                <li>Monday meeting</li>
+                                <li>Regarding org chart changes</li>
+                                <li>Meeting with Cliff</li>
+                                <li>Global Marketing Meeting</li>
+                                <li>Out tonight with collegues?</li>
+                            </ul>
+                        </div>
+                        <div id="Calendar" class="hidden">
+                            <ul>
+                                <li>
+                                    <h6>11/5 Monday</h6>
+                                    <p>Martha Birthday</p>
+                                </li>
+                                <li>
+                                    <h6>15/6 Sunday</h6>
+                                    <p>Job interview for internal position</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="Attachments" class="hidden">
+                            <ul>
+                                <li>Build enterprise apps</li>
+                                <li>Fw: Regarding Multiline textbox</li>
+                                <li>Away next week</li>
+                                <li>Fw: Your Costume is ready</li>
+                                <li>Update completed</li>
+                            </ul>
+                        </div>
+                        <div id="Favourites" class="hidden">
+                            <ul>
+                                <li>90% Discount!</li>
+                                <li>90% Discount!</li>
+                                <li>One time offer!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                #drawer-content li {
+                    font-size: 1.2em;
+                    padding-left: .89em;
+                    background: 0 0;
+                    border-radius: 0;
+                    border-width: 0 0 1px;
+                    border-color: rgba(33, 37, 41, 0.125);
+                    border-style: solid;
+                    line-height: 1.5em;
+                    padding: 1.09em .84em 1.23em .84em;
+                }
+        
+                #drawer-content li:last-child {
+                    border: 0;
+                }
+        
+                .hidden {
+                    display: none;
+                }
+        
+                .k-toolbar .k-icon {
+                    font-size: 18px;
+                }
+
+                #megaStore {
+                    max-width: 600px;
+                    margin: 30px auto;
+                    padding-top: 120px;
+                    background: url('../content/web/menu/header.jpg') no-repeat center 0;
+                }
+                #menu h2 {
+                    font-size: 1em;
+                    text-transform: uppercase;
+                    padding: 5px 10px;
+                }
+                #template img {
+                    margin: 5px 20px 0 0;
+                    float: left;
+                }
+                #template {
+                    width: 380px;
+                }
+                #template ol {
+                    float: left;
+                    margin: 0 0 0 30px;
+                    padding: 10px 10px 0 10px;
+                }
+                #template:after {
+                    content: ".";
+                    display: block;
+                    height: 0;
+                    clear: both;
+                    visibility: hidden;
+                }
+                #template .k-button {
+                    float: left;
+                    clear: left;
+                    margin: 5px 0 5px 12px;
+                }
+
+                .customer-photo {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    background-size: 32px 35px;
+                    background-position: center center;
+                    vertical-align: middle;
+                    line-height: 32px;
+                    box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+                    margin-left: 5px;
+                }
+
+                .customer-name {
+                    display: inline-block;
+                    vertical-align: middle;
+                    line-height: 32px;
+                    padding-left: 3px;
+                }
+            </style>
+        </div>
+        
+    </body>
+</html>
