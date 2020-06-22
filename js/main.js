@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    var isMobile = Boolean(kendo.support.mobileOS);
+
     $("#menu").kendoMenu();
 
     $("#drawer").kendoDrawer({
@@ -24,40 +26,73 @@ $(document).ready(function () {
         swipeToOpen: true
     });
 
-    $("#grid").kendoGrid({
-        dataSource: {
-            type: "odata",
-            transport: {
-                read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
-            },
-            pageSize: 20
-        },
-        height: 550,
-        groupable: true,
-        sortable: true,
-        pageable: {
-            refresh: true,
-            pageSizes: true,
-            buttonCount: 5
-        },
-        columns: [{
-            template: "<div class='customer-photo'" +
-            "style='background-image: url(../content/web/Customers/#:data.CustomerID#.jpg);'></div>" +
-            "<div class='customer-name'>#: ContactName #</div>",
-            field: "ContactName",
-            title: "Contact Name",
-            width: 240
-        }, {
-            field: "ContactTitle",
-            title: "Contact Title"
-        }, {
-            field: "CompanyName",
-            title: "Company Name"
-        }, {
-            field: "Country",
-            width: 150
-        }]
-    });
+    var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service",
+                dataSource = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            url: crudServiceBaseUrl + "/Products",
+                            dataType: "jsonp"
+                        },
+                        update: {
+                            url: crudServiceBaseUrl + "/Products/Update",
+                            dataType: "jsonp"
+                        },
+                        destroy: {
+                            url: crudServiceBaseUrl + "/Products/Destroy",
+                            dataType: "jsonp"
+                        },
+                        create: {
+                            url: crudServiceBaseUrl + "/Products/Create",
+                            dataType: "jsonp"
+                        },
+                        parameterMap: function (options, operation) {
+                            if (operation !== "read" && options.models) {
+                                return { models: kendo.stringify(options.models) };
+                            }
+                        }
+                    },
+                    batch: true,
+                    pageSize: 20,
+                    schema: {
+                        model: {
+                            id: "ProductID",
+                            fields: {
+                                ProductID: { editable: false, nullable: true },
+                                ProductName: { validation: { required: true } },
+                                UnitPrice: { type: "number", validation: { required: true, min: 1 } },
+                                Discontinued: { type: "boolean" },
+                                UnitsInStock: { type: "number", validation: { min: 0, required: true } }
+                            }
+                        }
+                    }
+                });
+
+            $("#grid").kendoGrid({
+                dataSource: dataSource,
+                toolbar: ["create"],
+                height: 450,
+                mobile: true,
+                sortable: true,
+                pageable: true,
+                resizable: true,
+                filterable: true,
+                columnMenu: true,
+                columns: [
+                    { field: "ProductName", title: "Product Name", filterable: { multi: true, search: true }, width: "120px" },
+                    { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "120px" },
+                    { field: "UnitsInStock", title: "Units In Stock", width: "120px" },
+                    { field: "Discontinued", width: "120px" },
+                    { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],
+                editable: "popup"
+            });
+
+    if (isMobile) {
+        $("#menu").hide();
+        $("#drawer").hide();
+        // $("#qr-wrap").hide();
+        // $("#grid-wrap").show();
+        // $("#grid").data("kendoGrid").resize();
+    }
 });
 
 function toggleDrawer() {
